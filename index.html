@@ -4,6 +4,114 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>다시봄 보호소 입양 안내</title>
+  <style>
+    :root {
+      --bg: #fff8ef;
+      --card: #ffffff;
+      --text: #3d2f26;
+      --muted: #8a7566;
+      --line: #f0e2d2;
+      --accent: #f08a4b;
+      --accent-dark: #d46a2a;
+      --soft: #ffe9d3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, "Malgun Gothic", "Noto Sans KR", sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+    header {
+      padding: 32px 16px 28px;
+      text-align: center;
+      background: linear-gradient(180deg, #ffd9b0, var(--bg));
+    }
+    header h1 { margin: 0 0 8px; font-size: 1.6rem; color: var(--accent-dark); }
+    header p { margin: 0; color: var(--muted); font-size: .95rem; }
+    main { max-width: 720px; margin: 0 auto; padding: 8px 16px 40px; }
+    section { margin-bottom: 32px; }
+    h2 { font-size: 1.25rem; margin: 0 0 12px; }
+
+    /* 필터 버튼 */
+    #filter div { display: flex; gap: 8px; }
+    #filter button {
+      flex: 1;
+      min-height: 48px;
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--accent-dark);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    #filter button[aria-pressed="true"] {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* 동물 카드 */
+    #animals {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 12px 12px 8px;
+      box-shadow: 0 2px 8px rgba(160, 100, 40, .12);
+    }
+    .card[hidden] { display: none; }
+    .photo {
+      aspect-ratio: 4 / 3;
+      background: #d9d9d9;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .card h3 { margin: 0 4px 6px; font-size: 1.3rem; color: var(--accent-dark); }
+    .card ul { list-style: none; margin: 0; padding: 0; }
+    .card li {
+      padding: 8px 4px;
+      border-top: 1px solid var(--line);
+      font-size: .98rem;
+    }
+
+    /* 입양 절차 */
+    #process ol {
+      list-style: none;
+      counter-reset: step;
+      margin: 0;
+      padding: 0;
+    }
+    #process li {
+      counter-increment: step;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 56px;
+      padding: 10px 16px;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 1px 4px rgba(160, 100, 40, .1);
+      font-weight: 700;
+    }
+    #process li + li { margin-top: 10px; }
+    #process li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--soft);
+      color: var(--accent-dark);
+      text-align: center;
+      line-height: 32px;
+    }
+  </style>
 </head>
 <body>
   <header>
