@@ -15,9 +15,9 @@
     <section id="filter">
       <h2>친구들 보기</h2>
       <div>
-        <button type="button" data-filter="all">전체</button>
-        <button type="button" data-filter="dog">강아지</button>
-        <button type="button" data-filter="cat">고양이</button>
+        <button type="button" data-filter="all" aria-pressed="true">전체</button>
+        <button type="button" data-filter="dog" aria-pressed="false">강아지</button>
+        <button type="button" data-filter="cat" aria-pressed="false">고양이</button>
       </div>
     </section>
 
@@ -66,5 +66,23 @@
       </ol>
     </section>
   </main>
+
+  <script>
+    var buttons = document.querySelectorAll('#filter button');
+    var cards = document.querySelectorAll('#animals .card');
+
+    // 버튼을 누르면 해당 종류(data-type)의 카드만 보여주고, 선택된 버튼을 표시
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.dataset.filter;
+        cards.forEach(function (card) {
+          card.hidden = filter !== 'all' && card.dataset.type !== filter;
+        });
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b === btn));
+        });
+      });
+    });
+  </script>
 </body>
 </html>
